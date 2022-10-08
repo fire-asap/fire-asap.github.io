@@ -1,0 +1,42 @@
+{
+  "name": "fire-asap.github.io",
+  "version": "1.0.0",
+  "description": "demo of dataLab",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fire-asap/fire-asap.github.io.git"
+  },
+  "keywords": [
+    "dataLab",
+    "demo"
+  ],
+  "author": "Huan Qiu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fire-asap/fire-asap.github.io/issues"
+  },
+  "homepage": ".",
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all",
+      "ie 11"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1"
+  }
+}
