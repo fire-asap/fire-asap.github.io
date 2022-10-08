@@ -1,14 +1,5 @@
 module.exports = {
   parser: '@babel/eslint-parser',
-  parserOptions: {
-    // add this for lacking of babel config file under root
-    requireConfigFile: false,
-    babelOptions: {
-      babelrc: false,
-      configFile: false,
-      presets: ['@babel/preset-env', '@babel/preset-react'],
-    },
-  },
   env: {
     jest: true,
     browser: true,
@@ -21,6 +12,13 @@ module.exports = {
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
+    },
+    // add this for lacking of babel config file under root
+    requireConfigFile: false,
+    babelOptions: {
+      babelrc: false,
+      configFile: false,
+      presets: ['@babel/preset-env', '@babel/preset-react'],
     },
   },
   extends: ['airbnb', 'airbnb/hooks', 'plugin:prettier/recommended'],
