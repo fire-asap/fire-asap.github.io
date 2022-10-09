@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { QuestionCircleFilled } from '@ant-design/icons';
+import { InfoCircleOutlined } from '@ant-design/icons';
 import {
   Select,
   Divider,
@@ -353,7 +353,7 @@ function Form() {
                   <Tooltip title={descriptionDTEScore} color="rgb(62, 122, 64)">
                     <div className="toolTipText">
                       <span>DTE score</span>
-                      <QuestionCircleFilled
+                      <InfoCircleOutlined
                         style={{
                           color: 'rgb(62, 122, 64)',
                           position: 'relative',
@@ -365,7 +365,7 @@ function Form() {
                   </Tooltip>
                 }
                 bordered
-                style={{ width: 145 }}
+                style={{ width: 150 }}
               >
                 <div className="cardContent center">{sum}</div>
               </Card>
@@ -376,7 +376,7 @@ function Form() {
                   <Tooltip title={descptionDTEStatus} color="rgb(62, 122, 64)">
                     <div className="toolTipText left">
                       <span>Predicted DTE status</span>
-                      <QuestionCircleFilled
+                      <InfoCircleOutlined
                         style={{
                           color: 'rgb(62, 122, 64)',
                           position: 'relative',
@@ -388,9 +388,9 @@ function Form() {
                   </Tooltip>
                 }
                 bordered
-                style={{ width: 228 }}
+                style={{ width: 232 }}
               >
-                <div className="cardContent left">{predictedDTEStatus}</div>
+                <div className="cardContent center">{predictedDTEStatus}</div>
               </Card>
             </div>
           </>
@@ -402,6 +402,11 @@ function Form() {
             onClick={handleBtnClicked}
             loading={loading}
             disabled={percentage !== 100}
+            style={{
+              marginTop: '20px',
+              borderColor: 'rgb(62, 122, 64)',
+              backgroundColor: 'rgb(62, 122, 64)',
+            }}
           >
             Calculate
           </Button>

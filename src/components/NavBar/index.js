@@ -3,14 +3,18 @@ import styled from 'styled-components';
 import logo from '../../assets/logo.png';
 import logoText from '../../assets/logo-text.png';
 
-const HeroBannerWrap = styled.header`
+const NavBarWrap = styled.header`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
   display: flex;
   align-items: center;
   width: 100vw;
   height: 64px;
   background-color: #fff;
   padding: 0px 25px;
-  margin-bottom: 10px;
   box-shadow: 0 2px 8px #f0f1f2;
   text-align: left;
 
@@ -45,16 +49,16 @@ const Icon = styled.div`
   }
 `;
 
-function HeroBanner() {
+function NavBar() {
   return (
-    <HeroBannerWrap>
+    <NavBarWrap>
       <Icon>
         <img src={logo} alt="logo of SYSUCC" />
       </Icon>
       <span className="logoName">Data Science Lab</span>
       <img className="logoTextImg" src={logoText} alt="logo text of SYSUCC" />
-    </HeroBannerWrap>
+    </NavBarWrap>
   );
 }
 
-export default HeroBanner;
+export default NavBar;

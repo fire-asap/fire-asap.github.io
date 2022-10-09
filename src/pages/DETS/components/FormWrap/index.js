@@ -24,6 +24,10 @@ const FormWrap = styled.section`
     &.left {
       text-align: left;
     }
+
+    span {
+      padding-right: 4px;
+    }
   }
 
   .cardContent {
@@ -34,10 +38,6 @@ const FormWrap = styled.section`
 
     &.center {
       text-align: center;
-    }
-
-    &.left {
-      text-align: left;
     }
   }
 `;
