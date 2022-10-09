@@ -13,9 +13,13 @@ const HeaderWrap = styled.div`
   height: 360px;
   text-align: center;
   background: linear-gradient(70deg, rgb(146, 198, 58, 0.4), rgb(62, 122, 64));
-  // background: linear-gradient(70deg, #ccc, #ddd);
   padding: 40px 0px 20px 0px;
   margin-bottom: 40px;
+  color: #eee;
+
+  h1 {
+    color: #eee;
+  }
 
   img {
     height: 300px;

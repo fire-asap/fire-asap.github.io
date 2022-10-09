@@ -21,7 +21,10 @@ const NavBarWrap = styled.header`
   text-align: left;
 
   span {
+    position: relative;
+    top: 2px;
     font-weight: 700;
+    color: #ggg;
   }
 
   a {

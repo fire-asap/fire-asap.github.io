@@ -6,9 +6,10 @@ const FormWrap = styled.section`
   margin-top: -15px;
 
   .chocieContainer {
-    line-height: 2.5;
+    line-height: 2;
     .label {
       padding-right: 20px;
+      font-size: 1rem;
     }
   }
 
