@@ -1,4 +1,5 @@
 #!/bin/zsh
+# for dev-* branch
 
 rm -rf src/
 rm -rf public/
