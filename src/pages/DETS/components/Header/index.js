@@ -10,7 +10,7 @@ const HeaderWrap = styled.div`
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 360px;
+  height: 300px;
   text-align: center;
   background: linear-gradient(70deg, rgb(146, 198, 58, 0.4), rgb(62, 122, 64));
   padding: 40px 0px 20px 0px;
@@ -19,12 +19,17 @@ const HeaderWrap = styled.div`
 
   h1 {
     color: #eee;
+    font-size: 2.2em;
+  }
+
+  div {
+    font-size: 1.2em;
   }
 
   img {
-    height: 300px;
+    height: 240px;
     position: absolute;
-    bottom: 24px;
+    bottom: 18px;
     right: 0px;
     opacity: 0.04;
   }

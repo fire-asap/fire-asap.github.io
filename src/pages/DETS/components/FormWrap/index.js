@@ -48,7 +48,6 @@ const FormWrap = styled.section`
 
   .cardContent {
     font-size: 1.5rem;
-    // color: rgb(219, 117, 53);
     color: rgb(62, 122, 64);
     font-weight: bold;
 

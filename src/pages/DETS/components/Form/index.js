@@ -125,7 +125,7 @@ function Form() {
       <div className="chocieContainer">
         <span className="label">{labels.two}</span>
         <Radio.Group onChange={handleFirstLineChange} value={isFirstLine}>
-          <Space direction="vertical">
+          <Space>
             <Radio value={1}>Yes</Radio>
             <Radio value={0}>No</Radio>
           </Space>
@@ -136,7 +136,7 @@ function Form() {
       <div className="chocieContainer">
         <span className="label">{labels.three}</span>
         <Radio.Group onChange={handleAntiCTLA4Change} value={hasAntiCTLA4}>
-          <Space direction="vertical">
+          <Space>
             <Radio value={1}>Yes</Radio>
             <Radio value={0}>No</Radio>
           </Space>
