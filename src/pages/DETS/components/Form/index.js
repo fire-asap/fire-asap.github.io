@@ -238,7 +238,7 @@ function Form() {
 
   return (
     <>
-      <div>
+      <div className="chocieContainer">
         <span className="cancerTypeLabel label">
           1. Please select a cancer type:
         </span>
@@ -259,7 +259,7 @@ function Form() {
       {/* <Divider dashed /> */}
       <br />
 
-      <div>
+      <div className="chocieContainer">
         <span className="label">2. Whether in the first-line setting:</span>
         <Radio.Group onChange={handleFirstLineChange} value={isFirstLine}>
           <Space direction="vertical">
@@ -271,7 +271,7 @@ function Form() {
       {/* <Divider dashed /> */}
       <br />
 
-      <div>
+      <div className="chocieContainer">
         <span className="label">
           3. Whether anti-CTLA-4 involved in treatment arm:
         </span>
@@ -285,7 +285,7 @@ function Form() {
       {/* <Divider dashed /> */}
       <br />
 
-      <div>
+      <div className="chocieContainer">
         <span className="treatmentRegimenLabel label">
           4. Please select a treatment arm regimen:
         </span>
@@ -306,7 +306,7 @@ function Form() {
       {/* <Divider dashed /> */}
       <br />
 
-      <div>
+      <div className="chocieContainer">
         <span className="controlRegimenLabel label">
           5. Please select a control arm regimen:
         </span>

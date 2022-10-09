@@ -2,10 +2,14 @@ import styled from 'styled-components';
 
 const FormWrap = styled.section`
   width: 100%;
-  padding: 10px 0px 20px 0px;
+  padding: 0px 0px 20px 0px;
+  margin-top: -15px;
 
-  .label {
-    padding-right: 20px;
+  .chocieContainer {
+    line-height: 2.5;
+    .label {
+      padding-right: 20px;
+    }
   }
 
   .resultSection {
