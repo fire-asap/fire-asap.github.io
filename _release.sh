@@ -5,5 +5,5 @@ rm -rf public/
 rm .eslintrc*
 rm .prettierrc
 rm package*
-mv docs/* .
-rm -r docs
+mv build/* .
+rm -r build
