@@ -92,6 +92,16 @@ function Form() {
     resetBtnStatus();
   };
 
+  const handleOnReset = () => {
+    setCancerType(undefined);
+    setIsFirstLine(undefined);
+    setHasAntiCTLA4(undefined);
+    setTreatmentRegimen(undefined);
+    setControlRegimen(undefined);
+    setIsCalculateClicked(false);
+    setLoading(false);
+  };
+
   const handleBtnClicked = () => {
     if (isCalculateClicked) return;
     if (
@@ -118,6 +128,7 @@ function Form() {
           placeholder="cancer types"
           optionList={cancerTypeOptions}
           onChange={handleCancerTypeChange}
+          value={cancerType}
         />
       </div>
       <br />
@@ -150,6 +161,7 @@ function Form() {
           placeholder="Treatment arm regimen"
           optionList={treatmentRegimenOptions}
           onChange={handleTreatmentRegimenChange}
+          value={treatmentRegimen}
         />
       </div>
       <br />
@@ -160,6 +172,7 @@ function Form() {
           placeholder="Control arm regimen"
           optionList={controlRegimenOptions}
           onChange={handleControlRegimenChange}
+          value={controlRegimen}
         />
       </div>
       <br />
@@ -167,6 +180,7 @@ function Form() {
       <ContentDivider
         isCompleted={isCalculateClicked}
         percentage={percentage}
+        onReset={handleOnReset}
       />
 
       <div

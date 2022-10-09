@@ -4,7 +4,7 @@ import { Select } from 'antd';
 
 const { Option } = Select;
 
-function Selector({ placeholder, onChange, optionList }) {
+function Selector({ placeholder, onChange, optionList, value }) {
   return (
     <Select
       style={{
@@ -12,6 +12,7 @@ function Selector({ placeholder, onChange, optionList }) {
       }}
       placeholder={placeholder}
       onChange={onChange}
+      value={value}
     >
       {optionList.map(item => (
         <Option key={item.key} value={item.key}>

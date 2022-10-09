@@ -56,7 +56,14 @@ const FormWrap = styled.section`
     }
   }
 
-  @media only screen and (max-width: 414px) {
+  #dataLabResetBtn {
+    color: rgb(62, 122, 64);
+    border-color: rgb(62, 122, 64);
+    opacity: 0.6;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 `;
 
