@@ -11,14 +11,18 @@ const HeroBannerWrap = styled.header`
   background-color: #fff;
   padding: 0px 25px;
   margin-bottom: 10px;
-  box-shadow: 0 6px 8px #f0f1f2;
+  box-shadow: 0 2px 8px #f0f1f2;
   text-align: left;
 
   span {
     font-weight: 700;
   }
 
-  .logoText {
+  .logoName {
+    font-size: 1.1rem;
+  }
+
+  .logoTextImg {
     width: 80px;
     margin-left: auto;
   }
@@ -47,8 +51,8 @@ function HeroBanner() {
       <Icon>
         <img src={logo} alt="logo of SYSUCC" />
       </Icon>
-      <span>Data Science Lab</span>
-      <img className="logoText" src={logoText} alt="logo text of SYSUCC" />
+      <span className="logoName">Data Science Lab</span>
+      <img className="logoTextImg" src={logoText} alt="logo text of SYSUCC" />
     </HeroBannerWrap>
   );
 }

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const HeaderWrap = styled.header`
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.1);
+  // background-color: rgba(0, 0, 0, 0.1);
   padding: 10px 0px 20px 0px;
   margin-bottom: 40px;
 `;
