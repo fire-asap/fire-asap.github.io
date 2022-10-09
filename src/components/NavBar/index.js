@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+
 import logo from '../../assets/logo.png';
 import logoText from '../../assets/logo-text.png';
 
@@ -22,8 +24,12 @@ const NavBarWrap = styled.header`
     font-weight: 700;
   }
 
-  .logoName {
-    font-size: 1.1rem;
+  a {
+    color: #000;
+
+    .logoName {
+      font-size: 1.1rem;
+    }
   }
 
   .logoTextImg {
@@ -52,10 +58,13 @@ const Icon = styled.div`
 function NavBar() {
   return (
     <NavBarWrap>
-      <Icon>
-        <img src={logo} alt="logo of SYSUCC" />
-      </Icon>
-      <span className="logoName">Data Science Lab</span>
+      <Link to="/">
+        <Icon>
+          <img src={logo} alt="logo of SYSUCC" />
+        </Icon>
+        <span className="logoName">Data Science Lab</span>
+      </Link>
+
       <img className="logoTextImg" src={logoText} alt="logo text of SYSUCC" />
     </NavBarWrap>
   );
