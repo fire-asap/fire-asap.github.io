@@ -1,6 +1,15 @@
 import React, { useState, useMemo } from 'react';
 import { QuestionCircleFilled } from '@ant-design/icons';
-import { Select, Divider, Radio, Space, Button, Card, Tooltip } from 'antd';
+import {
+  Select,
+  Divider,
+  Radio,
+  Space,
+  Button,
+  Card,
+  Tooltip,
+  Progress,
+} from 'antd';
 
 const { Option } = Select;
 
@@ -167,6 +176,18 @@ function Form() {
     return items;
   }, []);
 
+  const percentage = useMemo(() => {
+    const values = [
+      cancerType,
+      isFirstLine,
+      hasAntiCTLA4,
+      treatmentRegimen,
+      controlRegimen,
+    ];
+    const count = values.filter(item => item !== undefined).length;
+    return (count / 5) * 100;
+  }, [cancerType, controlRegimen, hasAntiCTLA4, isFirstLine, treatmentRegimen]);
+
   const resetBtnStatus = () => {
     setLoading(false);
     setIsCalculateClicked(false);
@@ -175,19 +196,16 @@ function Form() {
   const handleCancerTypeChange = value => {
     setCancerType(value);
     resetBtnStatus();
-    console.log(`setCancerType: ${value}`);
   };
 
   const handleTreatmentRegimenChange = value => {
     setTreatmentRegimen(value);
     resetBtnStatus();
-    console.log(`setTreatmentRegimen: ${value}`);
   };
 
   const handleControlRegimenChange = value => {
     setControlRegimen(value);
     resetBtnStatus();
-    console.log(`setControlRegimen: ${value}`);
   };
 
   const handleFirstLineChange = e => {
@@ -215,8 +233,6 @@ function Form() {
       setTimeout(() => {
         setIsCalculateClicked(true);
       }, 800);
-    } else {
-      alert('没选完');
     }
   };
 
@@ -310,7 +326,15 @@ function Form() {
       </div>
       <br />
       <Divider plain style={{ color: 'rgba(0, 0, 0, 0.1)' }}>
-        Result
+        {isCalculateClicked ? (
+          'Result'
+        ) : (
+          <Progress
+            percent={percentage}
+            steps={5}
+            strokeColor="rgb(62, 122, 64)"
+          />
+        )}
       </Divider>
 
       <div
@@ -377,6 +401,7 @@ function Form() {
             shape="round"
             onClick={handleBtnClicked}
             loading={loading}
+            disabled={percentage !== 100}
           >
             Calculate
           </Button>
