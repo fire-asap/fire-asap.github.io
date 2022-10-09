@@ -402,11 +402,6 @@ function Form() {
             onClick={handleBtnClicked}
             loading={loading}
             disabled={percentage !== 100}
-            style={{
-              marginTop: '20px',
-              borderColor: 'rgb(62, 122, 64)',
-              backgroundColor: 'rgb(62, 122, 64)',
-            }}
           >
             Calculate
           </Button>
