@@ -20,8 +20,8 @@ const HeaderWrap = styled.div`
   img {
     height: 300px;
     position: absolute;
-    top: 0;
-    right: 100px;
+    bottom: 24px;
+    right: 0px;
     opacity: 0.04;
   }
 `;
@@ -32,8 +32,8 @@ function Header() {
       <img src={flowImg} alt="" />
       <h1>Delayed Treatment Effect Scoring(DTES) System</h1>
       <div>
-        Voluptate laborum magna Lorem amet fugiat proident minim labore
-        exercitation veniam mollit consequat minim.
+        A calculation tool for predicting delayed treatment effects of immune
+        checkpoint inhibitors (ICIs)
       </div>
     </HeaderWrap>
   );

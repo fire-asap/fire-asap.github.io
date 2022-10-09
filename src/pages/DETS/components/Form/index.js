@@ -244,7 +244,7 @@ function Form() {
         </span>
         <Select
           style={{
-            width: 360,
+            width: 370,
           }}
           placeholder="cancer types"
           onChange={handleCancerTypeChange}
@@ -291,7 +291,7 @@ function Form() {
         </span>
         <Select
           style={{
-            width: 360,
+            width: 370,
           }}
           placeholder="Treatment arm regimen"
           onChange={handleTreatmentRegimenChange}
@@ -312,7 +312,7 @@ function Form() {
         </span>
         <Select
           style={{
-            width: 500,
+            width: 370,
           }}
           placeholder="Control arm regimen"
           onChange={handleControlRegimenChange}
