@@ -11,11 +11,27 @@ const FormWrap = styled.section`
       padding-right: 20px;
       font-size: 1rem;
     }
+
+    .secLabel {
+      font-size: 0.9rem;
+    }
+
+    .label.topLabel {
+      display: block;
+    }
+
+    .label.secLabel {
+      padding-left: 40px;
+    }
   }
 
   .resultSection {
     display: flex;
     justify-content: center;
+
+    .toolTipText {
+      text-align: center;
+    }
 
     .ant-btn-primary {
       width: 200px;
