@@ -3,17 +3,14 @@ import { Radio, Space, Button } from 'antd';
 import ResultCard from '../ResultCard';
 import ContentDivider from '../ContentDivider';
 import Selector from '../Selector';
-import { isValid, populateSelections } from './helpers';
-import constants from './constants';
-import getResult from '../../utils/getResult';
-
-const {
+import { isValid, populateSelections, getResult } from './helpers';
+import {
   cancerTypeOptions,
   treatmentRegimenOptions,
   controlRegimenOptions,
   descptionDTEStatus,
   labels,
-} = constants;
+} from './constants';
 
 function Form() {
   const [isFirstLine, setIsFirstLine] = useState(undefined);

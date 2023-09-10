@@ -1,6 +1,6 @@
 import resultJson from './test_data.json';
-import getResult from '../getResult';
-import { varNames } from '../../contants';
+import { varNames } from '../constants';
+import { getResult } from '../helpers';
 
 describe('all combo', () => {
   resultJson.forEach(item => {
