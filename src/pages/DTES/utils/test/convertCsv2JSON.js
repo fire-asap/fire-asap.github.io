@@ -6,7 +6,5 @@ const fileOutputName = path.resolve(__dirname, './test_data.json');
 
 csvToJson
   .fieldDelimiter(',')
+  .supportQuotedField(true)
   .generateJsonFileFromCsv(fileInputName, fileOutputName);
-
-// let json = csvToJson.fieldDelimiter(',').getJsonFromCsv(fileInputName);
-// console.log(json);
