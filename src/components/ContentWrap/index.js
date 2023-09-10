@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const ContentWrap = styled.div`
-  width: 90%;
-  max-width: 700px;
+  width: 92%;
+  max-width: 746px;
   padding: 10px 0px 0px 0px;
 `;
 

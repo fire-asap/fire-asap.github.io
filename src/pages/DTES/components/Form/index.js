@@ -3,31 +3,26 @@ import { Radio, Space, Button } from 'antd';
 import ResultCard from '../ResultCard';
 import ContentDivider from '../ContentDivider';
 import Selector from '../Selector';
-import { getSum, isValid } from './helpers';
-import constants from './constants';
-
-const {
+import { isValid, populateSelections, getResult } from './helpers';
+import {
   cancerTypeOptions,
   treatmentRegimenOptions,
   controlRegimenOptions,
-  descriptionDTEScore,
   descptionDTEStatus,
-  threshold,
-  definite,
-  indefinite,
   labels,
-} = constants;
+} from './constants';
 
 function Form() {
-  const [cancerType, setCancerType] = useState(undefined);
   const [isFirstLine, setIsFirstLine] = useState(undefined);
+  const [cancerType, setCancerType] = useState(undefined);
   const [hasAntiCTLA4, setHasAntiCTLA4] = useState(undefined);
   const [treatmentRegimen, setTreatmentRegimen] = useState(undefined);
   const [controlRegimen, setControlRegimen] = useState(undefined);
   const [isCalculateClicked, setIsCalculateClicked] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const [sum, predictedDTEStatus] = useMemo(() => {
+  // eslint-disable-next-line no-unused-vars
+  const [output, keysPtn] = useMemo(() => {
     if (
       isValid(
         cancerType,
@@ -37,15 +32,18 @@ function Form() {
         controlRegimen,
       )
     ) {
-      const score = getSum({
+      // populate the `selections`;
+      const selections = populateSelections({
         cancerType,
         isFirstLine,
         hasAntiCTLA4,
         treatmentRegimen,
         controlRegimen,
       });
-      const status = score >= threshold ? definite : indefinite;
-      return [score, status];
+
+      const result = getResult(selections);
+
+      return [result.output, result.keysPtn];
     }
     return [];
   }, [cancerType, controlRegimen, hasAntiCTLA4, isFirstLine, treatmentRegimen]);
@@ -123,6 +121,26 @@ function Form() {
   return (
     <>
       <div className="chocieContainer">
+        <span className="label topLabel">
+          1. Treatment stage (Ref: Non-first line)
+        </span>
+        <span className="label secLabel">{labels.two}</span>
+        {/* line2 */}
+        <Radio.Group
+          onChange={handleFirstLineChange}
+          value={isFirstLine}
+          className="secLabel"
+        >
+          <Space>
+            <Radio value={1}>Yes</Radio>
+            <Radio value={0}>No</Radio>
+          </Space>
+        </Radio.Group>
+      </div>
+      <br />
+
+      <div className="chocieContainer">
+        {/* cancer types */}
         <span className="cancerTypeLabel label">{labels.one}</span>
         <Selector
           placeholder="cancer types"
@@ -134,19 +152,14 @@ function Form() {
       <br />
 
       <div className="chocieContainer">
-        <span className="label">{labels.two}</span>
-        <Radio.Group onChange={handleFirstLineChange} value={isFirstLine}>
-          <Space>
-            <Radio value={1}>Yes</Radio>
-            <Radio value={0}>No</Radio>
-          </Space>
-        </Radio.Group>
-      </div>
-      <br />
-
-      <div className="chocieContainer">
-        <span className="label">{labels.three}</span>
-        <Radio.Group onChange={handleAntiCTLA4Change} value={hasAntiCTLA4}>
+        <span className="label topLabel">3. Trial phase (Ref: Phase 2)</span>
+        <span className="label secLabel">{labels.three}</span>
+        {/* ph2 */}
+        <Radio.Group
+          onChange={handleAntiCTLA4Change}
+          value={hasAntiCTLA4}
+          className="secLabel"
+        >
           <Space>
             <Radio value={1}>Yes</Radio>
             <Radio value={0}>No</Radio>
@@ -157,8 +170,9 @@ function Form() {
 
       <div className="chocieContainer">
         <span className="treatmentRegimenLabel label">{labels.four}</span>
+        {/* Experimental arm */}
         <Selector
-          placeholder="Treatment arm regimen"
+          placeholder="experimental arm"
           optionList={treatmentRegimenOptions}
           onChange={handleTreatmentRegimenChange}
           value={treatmentRegimen}
@@ -168,8 +182,9 @@ function Form() {
 
       <div className="chocieContainer">
         <span className="controlRegimenLabel label">{labels.five}</span>
+        {/* Control arm */}
         <Selector
-          placeholder="Control arm regimen"
+          placeholder="control arm"
           optionList={controlRegimenOptions}
           onChange={handleControlRegimenChange}
           value={controlRegimen}
@@ -192,21 +207,12 @@ function Form() {
         }}
       >
         {isCalculateClicked ? (
-          <>
-            <ResultCard
-              hintText={descriptionDTEScore}
-              titleText="DTE score"
-              style={{ width: 150 }}
-              content={sum}
-            />
-
-            <ResultCard
-              hintText={descptionDTEStatus}
-              titleText="Predicted DTE status"
-              style={{ width: 232 }}
-              content={predictedDTEStatus}
-            />
-          </>
+          <ResultCard
+            hintText={descptionDTEStatus}
+            titleText="Predicted DTE status"
+            style={{ width: 300 }}
+            content={output}
+          />
         ) : (
           <Button
             type="primary"
