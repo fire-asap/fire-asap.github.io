@@ -8,6 +8,8 @@ import {
 } from '../contants/index';
 
 export default function getResult(selections) {
+  const keysPtn = selections.reduce((prev, curr) => prev + curr.val, 'keys: ');
+
   const x = selections.reduce((prev, curr) => {
     const { name, val } = curr;
     const currMean = means[name];
@@ -39,5 +41,6 @@ export default function getResult(selections) {
     p1: posterior[0],
     p2: posterior[1],
     output: txt,
+    keysPtn,
   };
 }
