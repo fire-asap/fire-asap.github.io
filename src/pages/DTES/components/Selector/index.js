@@ -8,7 +8,7 @@ function Selector({ placeholder, onChange, optionList, value }) {
   return (
     <Select
       style={{
-        width: 370,
+        width: 300,
       }}
       placeholder={placeholder}
       onChange={onChange}
