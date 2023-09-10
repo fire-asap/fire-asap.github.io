@@ -1,3 +1,22 @@
+export const varNames = [
+  'line2',
+  'CA2BRCA',
+  'CA2EGA',
+  'CA2HNSC',
+  'CA2NSCLC',
+  'CA2RCC',
+  'CA2SCLC',
+  'CA2SKCM',
+  'ph2',
+  'trt_comboICI+chemo',
+  'trt_comboICI+ICI_PD1_CTLA4',
+  'trt_comboICI+ICI_PDL1_CTLA4',
+  'trt_comboICI+other',
+  'trt_combomono_PDL1',
+  'Combo_ctrlxchemo',
+  'Combo_ctrlxICI',
+  'Combo_ctrlxother',
+];
 export const means = {
   line2: 0.52336449,
   CA2BRCA: 0.04672897,
