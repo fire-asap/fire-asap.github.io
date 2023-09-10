@@ -80,7 +80,7 @@ export const controlRegimenOptions = [
 ];
 
 export const descptionDTEStatus =
-  'DTE-definite suggests the need for alternative methods for handling DTE';
+  'Presence of DTE suggests the need for alternative methods for handling DTE';
 
 export const labels = {
   one: ' 2. Cancer type:',
