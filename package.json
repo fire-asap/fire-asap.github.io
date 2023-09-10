@@ -1,7 +1,8 @@
 {
   "name": "fire-asap.github.io",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "demo of dataLab",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
@@ -52,6 +53,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
+    "convert-csv-to-json": "^2.0.0",
     "eslint": "^8.25.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.5.0",
