@@ -55,7 +55,7 @@ export const trialPhaseOptions = [
   },
 ];
 
-export const treatmentRegimenOptions = [
+export const experimentalArmOptions = [
   {
     label: 'ICI + chemotherapy',
     key: 'trt_comboICI+chemo',
@@ -77,8 +77,12 @@ export const treatmentRegimenOptions = [
     key: 'trt_combomono_PDL1',
   },
   {
-    label: 'Other',
-    key: 'Other',
+    label: 'Anti-PD-1 monotherapy',
+    key: 'Other_0',
+  },
+  {
+    label: 'Anti-CTLA-4 monotherapy',
+    key: 'Other_1',
   },
 ];
 
@@ -108,7 +112,7 @@ export const labels = {
   one: ' 2. Cancer type:',
   two: '1. Treatment stage: ',
   three: '3. Trial phase:',
-  four: '4. Experimental arm (Ref: Anti-PD-1 monotherapy):',
+  four: '4. Experimental arm:',
   five: '5. Control arm (Ref: Placebo/Best supportive care):',
 };
 

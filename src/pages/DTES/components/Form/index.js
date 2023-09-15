@@ -8,7 +8,7 @@ import {
   treatmentStageOptions,
   cancerTypeOptions,
   trialPhaseOptions,
-  treatmentRegimenOptions,
+  experimentalArmOptions,
   controlRegimenOptions,
   descptionDTEStatus,
   labels,
@@ -18,7 +18,7 @@ function Form() {
   const [isFirstLine, setIsFirstLine] = useState(undefined);
   const [cancerType, setCancerType] = useState(undefined);
   const [trialPhase, setTrialPhase] = useState(undefined);
-  const [treatmentRegimen, setTreatmentRegimen] = useState(undefined);
+  const [experimentalArm, setExperimentalArm] = useState(undefined);
   const [controlRegimen, setControlRegimen] = useState(undefined);
   const [isCalculateClicked, setIsCalculateClicked] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -30,7 +30,7 @@ function Form() {
         cancerType,
         isFirstLine,
         trialPhase,
-        treatmentRegimen,
+        experimentalArm,
         controlRegimen,
       )
     ) {
@@ -39,7 +39,7 @@ function Form() {
         cancerType,
         isFirstLine,
         hasAntiCTLA4: trialPhase,
-        treatmentRegimen,
+        treatmentRegimen: experimentalArm,
         controlRegimen,
       });
 
@@ -48,19 +48,19 @@ function Form() {
       return [result.output, result.keysPtn];
     }
     return [];
-  }, [cancerType, controlRegimen, trialPhase, isFirstLine, treatmentRegimen]);
+  }, [cancerType, controlRegimen, trialPhase, isFirstLine, experimentalArm]);
 
   const percentage = useMemo(() => {
     const values = [
       cancerType,
       isFirstLine,
       trialPhase,
-      treatmentRegimen,
+      experimentalArm,
       controlRegimen,
     ];
     const count = values.filter(item => item !== undefined).length;
     return (count / 5) * 100;
-  }, [cancerType, controlRegimen, trialPhase, isFirstLine, treatmentRegimen]);
+  }, [cancerType, controlRegimen, trialPhase, isFirstLine, experimentalArm]);
 
   const resetBtnStatus = () => {
     setLoading(false);
@@ -73,7 +73,7 @@ function Form() {
   };
 
   const handleTreatmentRegimenChange = value => {
-    setTreatmentRegimen(value);
+    setExperimentalArm(value);
     resetBtnStatus();
   };
 
@@ -96,7 +96,7 @@ function Form() {
     setCancerType(undefined);
     setIsFirstLine(undefined);
     setTrialPhase(undefined);
-    setTreatmentRegimen(undefined);
+    setExperimentalArm(undefined);
     setControlRegimen(undefined);
     setIsCalculateClicked(false);
     setLoading(false);
@@ -109,7 +109,7 @@ function Form() {
         cancerType,
         isFirstLine,
         trialPhase,
-        treatmentRegimen,
+        experimentalArm,
         controlRegimen,
       )
     ) {
@@ -183,9 +183,9 @@ function Form() {
         {/* Experimental arm */}
         <Selector
           placeholder="experimental arm"
-          optionList={treatmentRegimenOptions}
+          optionList={experimentalArmOptions}
           onChange={handleTreatmentRegimenChange}
-          value={treatmentRegimen}
+          value={experimentalArm}
         />
       </div>
       <br />

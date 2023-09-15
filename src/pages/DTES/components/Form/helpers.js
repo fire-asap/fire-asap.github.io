@@ -40,7 +40,8 @@ export function populateSelections({
   }
 
   // experimental arm
-  if (treatmentRegimen !== OTHER) {
+  // 有两个 Other 的变体, 值是 'Other_0', 'Other_1'
+  if (treatmentRegimen.includes(OTHER) === false) {
     const treatmentRegimenTargetIdx = result.findIndex(
       item => item.name === treatmentRegimen,
     );
