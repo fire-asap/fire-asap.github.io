@@ -5,6 +5,7 @@ import ContentDivider from '../ContentDivider';
 import Selector from '../Selector';
 import { isValid, populateSelections, getResult } from './helpers';
 import {
+  treatmentStageOptions,
   cancerTypeOptions,
   treatmentRegimenOptions,
   controlRegimenOptions,
@@ -80,8 +81,8 @@ function Form() {
     resetBtnStatus();
   };
 
-  const handleFirstLineChange = e => {
-    setIsFirstLine(e.target.value);
+  const handleFirstLineChange = value => {
+    setIsFirstLine(value); // please note the `value` is of type string
     resetBtnStatus();
   };
 
@@ -121,12 +122,15 @@ function Form() {
   return (
     <>
       <div className="chocieContainer">
-        <span className="label topLabel">
-          1. Treatment stage (Ref: Non-first line)
-        </span>
-        <span className="label secLabel">{labels.two}</span>
+        <span className="label ">{labels.two}</span>
         {/* line2 */}
-        <Radio.Group
+        <Selector
+          placeholder="treatment stage"
+          optionList={treatmentStageOptions}
+          onChange={handleFirstLineChange}
+          value={isFirstLine}
+        />
+        {/* <Radio.Group
           onChange={handleFirstLineChange}
           value={isFirstLine}
           className="secLabel"
@@ -135,7 +139,7 @@ function Form() {
             <Radio value={1}>Yes</Radio>
             <Radio value={0}>No</Radio>
           </Space>
-        </Radio.Group>
+        </Radio.Group> */}
       </div>
       <br />
 

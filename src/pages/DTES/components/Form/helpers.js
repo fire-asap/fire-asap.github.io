@@ -22,7 +22,7 @@ export function populateSelections({
   const OTHER = 'Other';
   const result = varNames.map(item => ({ name: item, val: 0 }));
   // isFirstLine => `line2`
-  if (isFirstLine === 1) {
+  if (isFirstLine === '1') {
     result[0].val = 1;
   }
 

@@ -1,3 +1,14 @@
+export const treatmentStageOptions = [
+  {
+    label: 'First line',
+    key: '1', // value map to 1
+  },
+  {
+    label: 'Non-first line',
+    key: '0', // value map to 0
+  },
+];
+
 export const cancerTypeOptions = [
   {
     label: 'Breast cancer',
@@ -84,7 +95,7 @@ export const descptionDTEStatus =
 
 export const labels = {
   one: ' 2. Cancer type:',
-  two: 'First line:',
+  two: '1. Treatment stage: ',
   three: 'Phase 3:',
   four: '4. Experimental arm (Ref: Anti-PD-1 monotherapy):',
   five: '5. Control arm (Ref: Placebo/Best supportive care):',
