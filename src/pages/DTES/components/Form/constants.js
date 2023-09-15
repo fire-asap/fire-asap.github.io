@@ -44,6 +44,17 @@ export const cancerTypeOptions = [
   },
 ];
 
+export const trialPhaseOptions = [
+  {
+    label: 'Phase 3',
+    key: '1', // value map to 1
+  },
+  {
+    label: 'Phase 2',
+    key: '0', // value map to 0
+  },
+];
+
 export const treatmentRegimenOptions = [
   {
     label: 'ICI + chemotherapy',
@@ -96,7 +107,7 @@ export const descptionDTEStatus =
 export const labels = {
   one: ' 2. Cancer type:',
   two: '1. Treatment stage: ',
-  three: 'Phase 3:',
+  three: '3. Trial phase:',
   four: '4. Experimental arm (Ref: Anti-PD-1 monotherapy):',
   five: '5. Control arm (Ref: Placebo/Best supportive care):',
 };

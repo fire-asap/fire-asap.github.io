@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Radio, Space, Button } from 'antd';
+import { Button } from 'antd';
 import ResultCard from '../ResultCard';
 import ContentDivider from '../ContentDivider';
 import Selector from '../Selector';
@@ -7,6 +7,7 @@ import { isValid, populateSelections, getResult } from './helpers';
 import {
   treatmentStageOptions,
   cancerTypeOptions,
+  trialPhaseOptions,
   treatmentRegimenOptions,
   controlRegimenOptions,
   descptionDTEStatus,
@@ -16,7 +17,7 @@ import {
 function Form() {
   const [isFirstLine, setIsFirstLine] = useState(undefined);
   const [cancerType, setCancerType] = useState(undefined);
-  const [hasAntiCTLA4, setHasAntiCTLA4] = useState(undefined);
+  const [trialPhase, setTrialPhase] = useState(undefined);
   const [treatmentRegimen, setTreatmentRegimen] = useState(undefined);
   const [controlRegimen, setControlRegimen] = useState(undefined);
   const [isCalculateClicked, setIsCalculateClicked] = useState(false);
@@ -28,7 +29,7 @@ function Form() {
       isValid(
         cancerType,
         isFirstLine,
-        hasAntiCTLA4,
+        trialPhase,
         treatmentRegimen,
         controlRegimen,
       )
@@ -37,7 +38,7 @@ function Form() {
       const selections = populateSelections({
         cancerType,
         isFirstLine,
-        hasAntiCTLA4,
+        hasAntiCTLA4: trialPhase,
         treatmentRegimen,
         controlRegimen,
       });
@@ -47,19 +48,19 @@ function Form() {
       return [result.output, result.keysPtn];
     }
     return [];
-  }, [cancerType, controlRegimen, hasAntiCTLA4, isFirstLine, treatmentRegimen]);
+  }, [cancerType, controlRegimen, trialPhase, isFirstLine, treatmentRegimen]);
 
   const percentage = useMemo(() => {
     const values = [
       cancerType,
       isFirstLine,
-      hasAntiCTLA4,
+      trialPhase,
       treatmentRegimen,
       controlRegimen,
     ];
     const count = values.filter(item => item !== undefined).length;
     return (count / 5) * 100;
-  }, [cancerType, controlRegimen, hasAntiCTLA4, isFirstLine, treatmentRegimen]);
+  }, [cancerType, controlRegimen, trialPhase, isFirstLine, treatmentRegimen]);
 
   const resetBtnStatus = () => {
     setLoading(false);
@@ -86,15 +87,15 @@ function Form() {
     resetBtnStatus();
   };
 
-  const handleAntiCTLA4Change = e => {
-    setHasAntiCTLA4(e.target.value);
+  const handleAntiCTLA4Change = value => {
+    setTrialPhase(value); // please note the `value` is of type string
     resetBtnStatus();
   };
 
   const handleOnReset = () => {
     setCancerType(undefined);
     setIsFirstLine(undefined);
-    setHasAntiCTLA4(undefined);
+    setTrialPhase(undefined);
     setTreatmentRegimen(undefined);
     setControlRegimen(undefined);
     setIsCalculateClicked(false);
@@ -107,7 +108,7 @@ function Form() {
       isValid(
         cancerType,
         isFirstLine,
-        hasAntiCTLA4,
+        trialPhase,
         treatmentRegimen,
         controlRegimen,
       )
@@ -122,7 +123,7 @@ function Form() {
   return (
     <>
       <div className="chocieContainer">
-        <span className="label ">{labels.two}</span>
+        <span className="label">{labels.two}</span>
         {/* line2 */}
         <Selector
           placeholder="treatment stage"
@@ -156,10 +157,15 @@ function Form() {
       <br />
 
       <div className="chocieContainer">
-        <span className="label topLabel">3. Trial phase (Ref: Phase 2)</span>
-        <span className="label secLabel">{labels.three}</span>
+        <span className="label">{labels.three}</span>
         {/* ph2 */}
-        <Radio.Group
+        <Selector
+          placeholder="trial phase"
+          optionList={trialPhaseOptions}
+          onChange={handleAntiCTLA4Change}
+          value={trialPhase}
+        />
+        {/* <Radio.Group
           onChange={handleAntiCTLA4Change}
           value={hasAntiCTLA4}
           className="secLabel"
@@ -168,7 +174,7 @@ function Form() {
             <Radio value={1}>Yes</Radio>
             <Radio value={0}>No</Radio>
           </Space>
-        </Radio.Group>
+        </Radio.Group> */}
       </div>
       <br />
 

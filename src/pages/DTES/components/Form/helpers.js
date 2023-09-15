@@ -35,7 +35,7 @@ export function populateSelections({
   }
 
   // hasAntiCTLA4  => `ph2`
-  if (hasAntiCTLA4 === 1) {
+  if (hasAntiCTLA4 === '1') {
     result[8].val = 1;
   }
 
