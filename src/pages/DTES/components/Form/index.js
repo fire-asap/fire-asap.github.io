@@ -126,7 +126,7 @@ function Form() {
         <span className="label">{labels.two}</span>
         {/* line2 */}
         <Selector
-          placeholder="treatment stage"
+          placeholder="please select a treatment stage"
           optionList={treatmentStageOptions}
           onChange={handleFirstLineChange}
           value={isFirstLine}
@@ -148,7 +148,7 @@ function Form() {
         {/* cancer types */}
         <span className="cancerTypeLabel label">{labels.one}</span>
         <Selector
-          placeholder="cancer types"
+          placeholder="please select a cancer type"
           optionList={cancerTypeOptions}
           onChange={handleCancerTypeChange}
           value={cancerType}
@@ -160,7 +160,7 @@ function Form() {
         <span className="label">{labels.three}</span>
         {/* ph2 */}
         <Selector
-          placeholder="trial phase"
+          placeholder="please select a trial phase"
           optionList={trialPhaseOptions}
           onChange={handleAntiCTLA4Change}
           value={trialPhase}
@@ -182,7 +182,7 @@ function Form() {
         <span className="treatmentRegimenLabel label">{labels.four}</span>
         {/* Experimental arm */}
         <Selector
-          placeholder="experimental arm"
+          placeholder="please select a experimental arm"
           optionList={experimentalArmOptions}
           onChange={handleTreatmentRegimenChange}
           value={experimentalArm}
@@ -194,7 +194,7 @@ function Form() {
         <span className="controlRegimenLabel label">{labels.five}</span>
         {/* Control arm */}
         <Selector
-          placeholder="control arm"
+          placeholder="please select a control arm"
           optionList={controlRegimenOptions}
           onChange={handleControlRegimenChange}
           value={controlRegimen}
