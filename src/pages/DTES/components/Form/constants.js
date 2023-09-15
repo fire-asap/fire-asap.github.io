@@ -100,7 +100,7 @@ export const controlRegimenOptions = [
     key: 'Combo_ctrlxother',
   },
   {
-    label: 'Other',
+    label: 'Placebo/Best supportive care',
     key: 'Other',
   },
 ];
@@ -113,7 +113,7 @@ export const labels = {
   two: '1. Treatment stage: ',
   three: '3. Trial phase:',
   four: '4. Experimental arm:',
-  five: '5. Control arm (Ref: Placebo/Best supportive care):',
+  five: '5. Control arm:',
 };
 
 export const varNames = [
