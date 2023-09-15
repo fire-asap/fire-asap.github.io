@@ -1,3 +1,14 @@
+export const treatmentStageOptions = [
+  {
+    label: 'First line',
+    key: '1', // value map to 1
+  },
+  {
+    label: 'Non-first line',
+    key: '0', // value map to 0
+  },
+];
+
 export const cancerTypeOptions = [
   {
     label: 'Breast cancer',
@@ -33,7 +44,18 @@ export const cancerTypeOptions = [
   },
 ];
 
-export const treatmentRegimenOptions = [
+export const trialPhaseOptions = [
+  {
+    label: 'Phase 3',
+    key: '1', // value map to 1
+  },
+  {
+    label: 'Phase 2',
+    key: '0', // value map to 0
+  },
+];
+
+export const experimentalArmOptions = [
   {
     label: 'ICI + chemotherapy',
     key: 'trt_comboICI+chemo',
@@ -55,8 +77,12 @@ export const treatmentRegimenOptions = [
     key: 'trt_combomono_PDL1',
   },
   {
-    label: 'Other',
-    key: 'Other',
+    label: 'Anti-PD-1 monotherapy',
+    key: 'Other_0',
+  },
+  {
+    label: 'Anti-CTLA-4 monotherapy',
+    key: 'Other_1',
   },
 ];
 
@@ -74,7 +100,7 @@ export const controlRegimenOptions = [
     key: 'Combo_ctrlxother',
   },
   {
-    label: 'Other',
+    label: 'Placebo/Best supportive care',
     key: 'Other',
   },
 ];
@@ -84,10 +110,10 @@ export const descptionDTEStatus =
 
 export const labels = {
   one: ' 2. Cancer type:',
-  two: 'First line:',
-  three: 'Phase 3:',
-  four: '4. Experimental arm (Ref: Anti-PD-1 monotherapy):',
-  five: '5. Control arm (Ref: Placebo/Best supportive care):',
+  two: '1. Treatment stage: ',
+  three: '3. Trial phase:',
+  four: '4. Experimental arm:',
+  five: '5. Control arm:',
 };
 
 export const varNames = [

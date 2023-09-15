@@ -1,12 +1,14 @@
 import React, { useState, useMemo } from 'react';
-import { Radio, Space, Button } from 'antd';
+import { Button } from 'antd';
 import ResultCard from '../ResultCard';
 import ContentDivider from '../ContentDivider';
 import Selector from '../Selector';
 import { isValid, populateSelections, getResult } from './helpers';
 import {
+  treatmentStageOptions,
   cancerTypeOptions,
-  treatmentRegimenOptions,
+  trialPhaseOptions,
+  experimentalArmOptions,
   controlRegimenOptions,
   descptionDTEStatus,
   labels,
@@ -15,8 +17,8 @@ import {
 function Form() {
   const [isFirstLine, setIsFirstLine] = useState(undefined);
   const [cancerType, setCancerType] = useState(undefined);
-  const [hasAntiCTLA4, setHasAntiCTLA4] = useState(undefined);
-  const [treatmentRegimen, setTreatmentRegimen] = useState(undefined);
+  const [trialPhase, setTrialPhase] = useState(undefined);
+  const [experimentalArm, setExperimentalArm] = useState(undefined);
   const [controlRegimen, setControlRegimen] = useState(undefined);
   const [isCalculateClicked, setIsCalculateClicked] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -27,8 +29,8 @@ function Form() {
       isValid(
         cancerType,
         isFirstLine,
-        hasAntiCTLA4,
-        treatmentRegimen,
+        trialPhase,
+        experimentalArm,
         controlRegimen,
       )
     ) {
@@ -36,8 +38,8 @@ function Form() {
       const selections = populateSelections({
         cancerType,
         isFirstLine,
-        hasAntiCTLA4,
-        treatmentRegimen,
+        hasAntiCTLA4: trialPhase,
+        treatmentRegimen: experimentalArm,
         controlRegimen,
       });
 
@@ -46,19 +48,19 @@ function Form() {
       return [result.output, result.keysPtn];
     }
     return [];
-  }, [cancerType, controlRegimen, hasAntiCTLA4, isFirstLine, treatmentRegimen]);
+  }, [cancerType, controlRegimen, trialPhase, isFirstLine, experimentalArm]);
 
   const percentage = useMemo(() => {
     const values = [
       cancerType,
       isFirstLine,
-      hasAntiCTLA4,
-      treatmentRegimen,
+      trialPhase,
+      experimentalArm,
       controlRegimen,
     ];
     const count = values.filter(item => item !== undefined).length;
     return (count / 5) * 100;
-  }, [cancerType, controlRegimen, hasAntiCTLA4, isFirstLine, treatmentRegimen]);
+  }, [cancerType, controlRegimen, trialPhase, isFirstLine, experimentalArm]);
 
   const resetBtnStatus = () => {
     setLoading(false);
@@ -71,7 +73,7 @@ function Form() {
   };
 
   const handleTreatmentRegimenChange = value => {
-    setTreatmentRegimen(value);
+    setExperimentalArm(value);
     resetBtnStatus();
   };
 
@@ -80,21 +82,21 @@ function Form() {
     resetBtnStatus();
   };
 
-  const handleFirstLineChange = e => {
-    setIsFirstLine(e.target.value);
+  const handleFirstLineChange = value => {
+    setIsFirstLine(value); // please note the `value` is of type string
     resetBtnStatus();
   };
 
-  const handleAntiCTLA4Change = e => {
-    setHasAntiCTLA4(e.target.value);
+  const handleAntiCTLA4Change = value => {
+    setTrialPhase(value); // please note the `value` is of type string
     resetBtnStatus();
   };
 
   const handleOnReset = () => {
     setCancerType(undefined);
     setIsFirstLine(undefined);
-    setHasAntiCTLA4(undefined);
-    setTreatmentRegimen(undefined);
+    setTrialPhase(undefined);
+    setExperimentalArm(undefined);
     setControlRegimen(undefined);
     setIsCalculateClicked(false);
     setLoading(false);
@@ -106,8 +108,8 @@ function Form() {
       isValid(
         cancerType,
         isFirstLine,
-        hasAntiCTLA4,
-        treatmentRegimen,
+        trialPhase,
+        experimentalArm,
         controlRegimen,
       )
     ) {
@@ -121,12 +123,15 @@ function Form() {
   return (
     <>
       <div className="chocieContainer">
-        <span className="label topLabel">
-          1. Treatment stage (Ref: Non-first line)
-        </span>
-        <span className="label secLabel">{labels.two}</span>
+        <span className="label">{labels.two}</span>
         {/* line2 */}
-        <Radio.Group
+        <Selector
+          placeholder="please select a treatment stage"
+          optionList={treatmentStageOptions}
+          onChange={handleFirstLineChange}
+          value={isFirstLine}
+        />
+        {/* <Radio.Group
           onChange={handleFirstLineChange}
           value={isFirstLine}
           className="secLabel"
@@ -135,7 +140,7 @@ function Form() {
             <Radio value={1}>Yes</Radio>
             <Radio value={0}>No</Radio>
           </Space>
-        </Radio.Group>
+        </Radio.Group> */}
       </div>
       <br />
 
@@ -143,7 +148,7 @@ function Form() {
         {/* cancer types */}
         <span className="cancerTypeLabel label">{labels.one}</span>
         <Selector
-          placeholder="cancer types"
+          placeholder="please select a cancer type"
           optionList={cancerTypeOptions}
           onChange={handleCancerTypeChange}
           value={cancerType}
@@ -152,10 +157,15 @@ function Form() {
       <br />
 
       <div className="chocieContainer">
-        <span className="label topLabel">3. Trial phase (Ref: Phase 2)</span>
-        <span className="label secLabel">{labels.three}</span>
+        <span className="label">{labels.three}</span>
         {/* ph2 */}
-        <Radio.Group
+        <Selector
+          placeholder="please select a trial phase"
+          optionList={trialPhaseOptions}
+          onChange={handleAntiCTLA4Change}
+          value={trialPhase}
+        />
+        {/* <Radio.Group
           onChange={handleAntiCTLA4Change}
           value={hasAntiCTLA4}
           className="secLabel"
@@ -164,7 +174,7 @@ function Form() {
             <Radio value={1}>Yes</Radio>
             <Radio value={0}>No</Radio>
           </Space>
-        </Radio.Group>
+        </Radio.Group> */}
       </div>
       <br />
 
@@ -172,10 +182,10 @@ function Form() {
         <span className="treatmentRegimenLabel label">{labels.four}</span>
         {/* Experimental arm */}
         <Selector
-          placeholder="experimental arm"
-          optionList={treatmentRegimenOptions}
+          placeholder="please select a experimental arm"
+          optionList={experimentalArmOptions}
           onChange={handleTreatmentRegimenChange}
-          value={treatmentRegimen}
+          value={experimentalArm}
         />
       </div>
       <br />
@@ -184,7 +194,7 @@ function Form() {
         <span className="controlRegimenLabel label">{labels.five}</span>
         {/* Control arm */}
         <Selector
-          placeholder="control arm"
+          placeholder="please select a control arm"
           optionList={controlRegimenOptions}
           onChange={handleControlRegimenChange}
           value={controlRegimen}

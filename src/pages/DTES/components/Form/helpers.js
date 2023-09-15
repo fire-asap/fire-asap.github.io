@@ -22,7 +22,7 @@ export function populateSelections({
   const OTHER = 'Other';
   const result = varNames.map(item => ({ name: item, val: 0 }));
   // isFirstLine => `line2`
-  if (isFirstLine === 1) {
+  if (isFirstLine === '1') {
     result[0].val = 1;
   }
 
@@ -35,12 +35,13 @@ export function populateSelections({
   }
 
   // hasAntiCTLA4  => `ph2`
-  if (hasAntiCTLA4 === 1) {
+  if (hasAntiCTLA4 === '1') {
     result[8].val = 1;
   }
 
   // experimental arm
-  if (treatmentRegimen !== OTHER) {
+  // 有两个 Other 的变体, 值是 'Other_0', 'Other_1'
+  if (treatmentRegimen.includes(OTHER) === false) {
     const treatmentRegimenTargetIdx = result.findIndex(
       item => item.name === treatmentRegimen,
     );
