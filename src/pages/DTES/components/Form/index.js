@@ -122,6 +122,9 @@ function Form() {
 
   return (
     <>
+      <div data-testid="keyPtn" style={{ height: '0px', visibility: 'hidden' }}>
+        {keysPtn}
+      </div>
       <div className="chocieContainer">
         <span className="label">{labels.two}</span>
         {/* line2 */}
@@ -130,6 +133,7 @@ function Form() {
           optionList={treatmentStageOptions}
           onChange={handleFirstLineChange}
           value={isFirstLine}
+          testId="treatmentSelector"
         />
         {/* <Radio.Group
           onChange={handleFirstLineChange}
@@ -152,6 +156,7 @@ function Form() {
           optionList={cancerTypeOptions}
           onChange={handleCancerTypeChange}
           value={cancerType}
+          testId="cancerSelector"
         />
       </div>
       <br />
@@ -164,17 +169,8 @@ function Form() {
           optionList={trialPhaseOptions}
           onChange={handleAntiCTLA4Change}
           value={trialPhase}
+          testId="trialSelector"
         />
-        {/* <Radio.Group
-          onChange={handleAntiCTLA4Change}
-          value={hasAntiCTLA4}
-          className="secLabel"
-        >
-          <Space>
-            <Radio value={1}>Yes</Radio>
-            <Radio value={0}>No</Radio>
-          </Space>
-        </Radio.Group> */}
       </div>
       <br />
 
@@ -186,6 +182,7 @@ function Form() {
           optionList={experimentalArmOptions}
           onChange={handleTreatmentRegimenChange}
           value={experimentalArm}
+          testId="experimentalSelector"
         />
       </div>
       <br />
@@ -198,6 +195,7 @@ function Form() {
           optionList={controlRegimenOptions}
           onChange={handleControlRegimenChange}
           value={controlRegimen}
+          testId="controlSelector"
         />
       </div>
       <br />
