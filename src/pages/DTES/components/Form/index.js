@@ -7,7 +7,6 @@ import { isValid, populateSelections, getResult } from './helpers';
 import {
   treatmentStageOptions,
   cancerTypeOptions,
-  trialPhaseOptions,
   experimentalArmOptions,
   controlRegimenOptions,
   descptionDTEStatus,
@@ -17,7 +16,7 @@ import {
 function Form() {
   const [isFirstLine, setIsFirstLine] = useState(undefined);
   const [cancerType, setCancerType] = useState(undefined);
-  const [trialPhase, setTrialPhase] = useState(undefined);
+  // const [trialPhase, setTrialPhase] = useState(undefined);
   const [experimentalArm, setExperimentalArm] = useState(undefined);
   const [controlRegimen, setControlRegimen] = useState(undefined);
   const [isCalculateClicked, setIsCalculateClicked] = useState(false);
@@ -25,20 +24,12 @@ function Form() {
 
   // eslint-disable-next-line no-unused-vars
   const [output, keysPtn] = useMemo(() => {
-    if (
-      isValid(
-        cancerType,
-        isFirstLine,
-        trialPhase,
-        experimentalArm,
-        controlRegimen,
-      )
-    ) {
+    if (isValid(cancerType, isFirstLine, experimentalArm, controlRegimen)) {
       // populate the `selections`;
       const selections = populateSelections({
         cancerType,
         isFirstLine,
-        hasAntiCTLA4: trialPhase,
+        // hasAntiCTLA4: trialPhase,
         treatmentRegimen: experimentalArm,
         controlRegimen,
       });
@@ -48,19 +39,19 @@ function Form() {
       return [result.output, result.keysPtn];
     }
     return [];
-  }, [cancerType, controlRegimen, trialPhase, isFirstLine, experimentalArm]);
+  }, [cancerType, controlRegimen, isFirstLine, experimentalArm]);
 
   const percentage = useMemo(() => {
     const values = [
       cancerType,
       isFirstLine,
-      trialPhase,
+      // trialPhase,
       experimentalArm,
       controlRegimen,
     ];
     const count = values.filter(item => item !== undefined).length;
-    return (count / 5) * 100;
-  }, [cancerType, controlRegimen, trialPhase, isFirstLine, experimentalArm]);
+    return (count / 4) * 100;
+  }, [cancerType, controlRegimen, isFirstLine, experimentalArm]);
 
   const resetBtnStatus = () => {
     setLoading(false);
@@ -87,15 +78,15 @@ function Form() {
     resetBtnStatus();
   };
 
-  const handleAntiCTLA4Change = value => {
-    setTrialPhase(value); // please note the `value` is of type string
-    resetBtnStatus();
-  };
+  // const handleAntiCTLA4Change = value => {
+  //   setTrialPhase(value); // please note the `value` is of type string
+  //   resetBtnStatus();
+  // };
 
   const handleOnReset = () => {
     setCancerType(undefined);
     setIsFirstLine(undefined);
-    setTrialPhase(undefined);
+    // setTrialPhase(undefined);
     setExperimentalArm(undefined);
     setControlRegimen(undefined);
     setIsCalculateClicked(false);
@@ -104,15 +95,7 @@ function Form() {
 
   const handleBtnClicked = () => {
     if (isCalculateClicked) return;
-    if (
-      isValid(
-        cancerType,
-        isFirstLine,
-        trialPhase,
-        experimentalArm,
-        controlRegimen,
-      )
-    ) {
+    if (isValid(cancerType, isFirstLine, experimentalArm, controlRegimen)) {
       setLoading(true);
       setTimeout(() => {
         setIsCalculateClicked(true);
@@ -157,19 +140,6 @@ function Form() {
           onChange={handleCancerTypeChange}
           value={cancerType}
           testId="cancerSelector"
-        />
-      </div>
-      <br />
-
-      <div className="chocieContainer">
-        <span className="label">{labels.three}</span>
-        {/* ph2 */}
-        <Selector
-          placeholder="please select a trial phase"
-          optionList={trialPhaseOptions}
-          onChange={handleAntiCTLA4Change}
-          value={trialPhase}
-          testId="trialSelector"
         />
       </div>
       <br />

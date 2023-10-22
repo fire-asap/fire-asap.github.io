@@ -5,7 +5,7 @@ import {
   dm,
   presentTxt,
   absenceTxt,
-  varNames,
+  varNamesAdjustToCalcOrder,
 } from './constants';
 
 export function isValid(...rest) {
@@ -15,12 +15,17 @@ export function isValid(...rest) {
 export function populateSelections({
   cancerType,
   isFirstLine,
-  hasAntiCTLA4,
+  // hasAntiCTLA4,
   treatmentRegimen,
   controlRegimen,
 }) {
   const OTHER = 'Other';
-  const result = varNames.map(item => ({ name: item, val: 0 }));
+  // 这里的顺序需要和代码中的一样，因此需要使用 varNamesAdjustToCalcOrder 这个常量
+  // 因为这个数组的中倒数2，3个数据计算的位置顺序和UI的颠倒
+  const result = varNamesAdjustToCalcOrder.map(item => ({
+    name: item,
+    val: 0,
+  }));
   // isFirstLine => `line2`
   if (isFirstLine === '1') {
     result[0].val = 1;
@@ -34,10 +39,10 @@ export function populateSelections({
     result[cancerTypeTargetIdx].val = 1;
   }
 
-  // hasAntiCTLA4  => `ph2`
-  if (hasAntiCTLA4 === '1') {
-    result[8].val = 1;
-  }
+  // // hasAntiCTLA4  => `ph2`
+  // if (hasAntiCTLA4 === '1') {
+  //   result[8].val = 1;
+  // }
 
   // experimental arm
   // 有两个 Other 的变体, 值是 'Other_0', 'Other_1'
@@ -83,7 +88,7 @@ export function getResult(selections) {
 
   const posterior = dist1.map(item => {
     const realResult = item / sumDist1;
-    return realResult.toFixed(13);
+    return realResult.toFixed(6);
   });
 
   const txt = posterior[0] > posterior[1] ? absenceTxt : presentTxt;

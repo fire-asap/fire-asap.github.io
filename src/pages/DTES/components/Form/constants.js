@@ -44,16 +44,16 @@ export const cancerTypeOptions = [
   },
 ];
 
-export const trialPhaseOptions = [
-  {
-    label: 'Phase 3',
-    key: '1', // value map to 1
-  },
-  {
-    label: 'Phase 2',
-    key: '0', // value map to 0
-  },
-];
+// export const trialPhaseOptions = [
+//   {
+//     label: 'Phase 3',
+//     key: '1', // value map to 1
+//   },
+//   {
+//     label: 'Phase 2',
+//     key: '0', // value map to 0
+//   },
+// ];
 
 export const experimentalArmOptions = [
   {
@@ -61,12 +61,8 @@ export const experimentalArmOptions = [
     key: 'trt_comboICI+chemo',
   },
   {
-    label: 'Anti-PD-1 + anti-CTLA-4',
-    key: 'trt_comboICI+ICI_PD1_CTLA4',
-  },
-  {
-    label: 'Anti-PD-L1 + anti-CTLA-4',
-    key: 'trt_comboICI+ICI_PDL1_CTLA4',
+    label: 'ICI + ICI',
+    key: 'trt_comboICI+ICI',
   },
   {
     label: 'ICI + other',
@@ -76,6 +72,7 @@ export const experimentalArmOptions = [
     label: 'Anti-PD-L1 monotherapy',
     key: 'trt_combomono_PDL1',
   },
+  // 下面两个一个是ref的值，一个是不在变量列表的值
   {
     label: 'Anti-PD-1 monotherapy',
     key: 'Other_0',
@@ -88,12 +85,12 @@ export const experimentalArmOptions = [
 
 export const controlRegimenOptions = [
   {
-    label: 'Chemotherapy involved',
-    key: 'Combo_ctrlxchemo',
+    label: 'ICI monotherapy/ICI + ICI',
+    key: 'Combo_ctrlxICI',
   },
   {
-    label: 'ICI involved',
-    key: 'Combo_ctrlxICI',
+    label: 'Chemotherapy involved',
+    key: 'Combo_ctrlxchemo',
   },
   {
     label: 'Other active control',
@@ -111,11 +108,31 @@ export const descptionDTEStatus =
 export const labels = {
   one: ' 2. Cancer type:',
   two: '1. Treatment stage: ',
-  three: '3. Trial phase:',
-  four: '4. Experimental arm:',
-  five: '5. Control arm:',
+  four: '3. Experimental arm:',
+  five: '4. Control arm:',
 };
 
+export const varNamesAdjustToCalcOrder = [
+  'line2',
+  'CA2BRCA',
+  'CA2EGA',
+  'CA2HNSC',
+  'CA2NSCLC',
+  'CA2RCC',
+  'CA2SCLC',
+  'CA2SKCM',
+  'trt_comboICI+chemo',
+  'trt_comboICI+ICI',
+  'trt_comboICI+other',
+  'trt_combomono_PDL1',
+  'Combo_ctrlxchemo',
+  'Combo_ctrlxICI',
+  'Combo_ctrlxother',
+];
+
+// 注意 'Combo_ctrlxchemo', 'Combo_ctrlxICI' 的顺序是按照 UI 的顺序调整过来
+// 和 mean, scale 中的顺序不一样
+// 当用来计算 seleciton 的时候，这两个key对应的顺序应该是反过来的
 export const varNames = [
   'line2',
   'CA2BRCA',
@@ -125,59 +142,53 @@ export const varNames = [
   'CA2RCC',
   'CA2SCLC',
   'CA2SKCM',
-  'ph2',
   'trt_comboICI+chemo',
-  'trt_comboICI+ICI_PD1_CTLA4',
-  'trt_comboICI+ICI_PDL1_CTLA4',
+  'trt_comboICI+ICI',
   'trt_comboICI+other',
   'trt_combomono_PDL1',
-  'Combo_ctrlxchemo',
   'Combo_ctrlxICI',
+  'Combo_ctrlxchemo',
   'Combo_ctrlxother',
 ];
 export const means = {
-  line2: 0.52336449,
-  CA2BRCA: 0.04672897,
-  CA2EGA: 0.07476636,
-  CA2HNSC: 0.07476636,
-  CA2NSCLC: 0.25233645,
-  CA2RCC: 0.06542056,
-  CA2SCLC: 0.10280374,
-  CA2SKCM: 0.12149533,
-  ph2: 0.91588785,
-  'trt_comboICI+chemo': 0.27102804,
-  'trt_comboICI+ICI_PD1_CTLA4': 0.06542056,
-  'trt_comboICI+ICI_PDL1_CTLA4': 0.04672897,
-  'trt_comboICI+other': 0.13084112,
-  trt_combomono_PDL1: 0.13084112,
-  Combo_ctrlxchemo: 0.71028037,
-  Combo_ctrlxICI: 0.05607477,
-  Combo_ctrlxother: 0.13084112,
+  line2: 0.523364486,
+  CA2BRCA: 0.046728972,
+  CA2EGA: 0.074766355,
+  CA2HNSC: 0.074766355,
+  CA2NSCLC: 0.252336449,
+  CA2RCC: 0.065420561,
+  CA2SCLC: 0.102803738,
+  CA2SKCM: 0.121495327,
+  'trt_comboICI+chemo': 0.271028037,
+  'trt_comboICI+ICI': 0.112149533,
+  'trt_comboICI+other': 0.130841121,
+  trt_combomono_PDL1: 0.130841121,
+  Combo_ctrlxchemo: 0.710280374,
+  Combo_ctrlxICI: 0.056074766,
+  Combo_ctrlxother: 0.130841121,
 };
 
 export const scalings = {
-  line2: 0.40877576,
-  CA2BRCA: -0.21281123,
-  CA2EGA: -0.27786485,
-  CA2HNSC: 1.59909552,
-  CA2NSCLC: -0.3871628,
-  CA2RCC: -2.28170714,
-  CA2SCLC: 1.80928865,
-  CA2SKCM: 1.76156542,
-  ph2: -0.01602277,
-  'trt_comboICI+chemo': -1.52013442,
-  'trt_comboICI+ICI_PD1_CTLA4': 1.28577542,
-  'trt_comboICI+ICI_PDL1_CTLA4': 0.46699858,
-  'trt_comboICI+other': -0.20313531,
-  trt_combomono_PDL1: 0.61760728,
-  Combo_ctrlxchemo: 1.56300638,
-  Combo_ctrlxICI: -1.57000944,
-  Combo_ctrlxother: 0.4563368,
+  line2: 0.449833965,
+  CA2BRCA: -0.160246881,
+  CA2EGA: -0.258956343,
+  CA2HNSC: 1.576396709,
+  CA2NSCLC: -0.390353511,
+  CA2RCC: -2.241324825,
+  CA2SCLC: 1.920290189,
+  CA2SKCM: 1.755220003,
+  'trt_comboICI+chemo': -1.530967256,
+  'trt_comboICI+ICI': 0.899004858,
+  'trt_comboICI+other': -0.274963977,
+  trt_combomono_PDL1: 0.64634196,
+  Combo_ctrlxchemo: 1.53138489,
+  Combo_ctrlxICI: -1.448887197,
+  Combo_ctrlxother: 0.507076591,
 };
 
-export const parx = [1.4858645, 0.6863944];
+export const parx = [1.4777089028643, 0.683247104169723];
 
-export const dm = [-1.0262629, 0.6375269];
+export const dm = [-1.01828496513176, 0.632570963187914];
 
 export const presentTxt = 'Presence of DTE';
 export const absenceTxt = 'Absence of DTE';
