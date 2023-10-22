@@ -4,10 +4,10 @@
 
 ## 1. 改动汇总
 #### 1.1 UI 变动(位置+文本)
-删掉原来的第三步骤；
-原来第四步骤删第2和3个item，插入一个新的item；
-原来第5步第二个item改名，并改其位置，放在第一位的位置；
-见ppt
+1.删掉原来的第3步骤；
+2.原来第4步骤删第2和3个item，插入一个新的item；
+3.原来第5步第二个item改名，并改其位置，放在第一位的位置；
+4.其他非ref/group内 item 被选中都做赋0处理
 
 
 #### 1.2 逻辑变动
@@ -23,7 +23,7 @@ dist1 = exp(-(dist0 - min(dist0)))
 posterior = dist1/sum(dist1)
 ```
 
-涉及常量值
+涉及常量值（4个都更新了）
 ```javascript
 export const means = {
   line2: 0.523364486,
@@ -61,9 +61,7 @@ export const scalings = {
   Combo_ctrlxother: 0.507076591,
 };
 
-
 export const parx = [1.4777089028643, 0.683247104169723];
-
 export const dm = [-1.01828496513176, 0.632570963187914];
 
 ```
