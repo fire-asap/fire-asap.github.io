@@ -1,14 +1,18 @@
-# DTES v3.0.0
+# DTES v3.0.0 - v3.1.0
 
 页面地址 [https://www.sysucc-data-science-lab.com/](https://www.sysucc-data-science-lab.com/)
 
 ## 1. 改动汇总
 #### 1.1 UI 变动(位置+文本)
+v3.0.0
 1.删掉原来的第3步骤；
 2.原来第4步骤删第2和3个item，插入一个新的item；
 3.原来第5步第二个item改名，并改其位置，放在第一位的位置；
 4.其他非ref/group内 item 被选中都做赋0处理
-
+v3.1.0
+改标题文案
+第一行：Delayed Treatment Effect Predicting (DTEP) System
+第二行：A tool for predicting delayed treatment effects and guiding immuno-oncology trial designs
 
 #### 1.2 逻辑变动
 

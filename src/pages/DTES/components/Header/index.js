@@ -10,7 +10,7 @@ const HeaderWrap = styled.div`
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 300px;
+  height: 320px;
   text-align: center;
   background: linear-gradient(70deg, rgb(146, 198, 58, 0.4), rgb(62, 122, 64));
   padding: 40px 0px 20px 0px;
@@ -39,10 +39,10 @@ function Header() {
   return (
     <HeaderWrap>
       <img src={flowImg} alt="" />
-      <h1>Delayed Treatment Effect Scoring(DTES) System</h1>
+      <h1>Delayed Treatment Effect Predicting (DTEP) System</h1>
       <div>
-        A calculation tool for predicting delayed treatment effects of immune
-        checkpoint inhibitors (ICIs)
+        A tool for predicting delayed treatment effects and guiding
+        immuno-oncology trial designs
       </div>
     </HeaderWrap>
   );
